@@ -1,0 +1,51 @@
+{
+  "run_list": [
+    "recipe[locale::default]",
+    "recipe[build-essential::default]",
+    "recipe[ntp::default]",
+    "recipe[latest-git::default]",
+    "recipe[themis-finals::python2]",
+    "recipe[dotfiles::default]",
+    "recipe[netdata::default]",
+    "recipe[latest-redis::default]",
+    "recipe[modern_nginx::default]",
+    "recipe[supervisor::default]",
+    "recipe[rcc-2017-imajinn-checker::default]"
+  ],
+  "environment": "staging",
+  "automatic": {
+    "ipaddress": "imajinn.checker.staging.rcc.zone"
+  },
+  "build-essential": {
+    "compile_time": true
+  },
+  "dotfiles": {
+    "users": [
+      "root",
+      "vagrant"
+    ]
+  },
+  "latest-redis": {
+    "listen": {
+      "host": "127.0.0.1",
+      "port": 6379
+    }
+  },
+  "rcc-2017-imajinn-checker": {
+    "revision": "master",
+    "fqdn": "imajinn.checker.staging.rcc.zone",
+    "debug": true,
+    "autostart": true,
+    "queue": {
+      "processes": 4
+    },
+    "push_run_timeout": 60,
+    "push_queue_ttl": 60,
+    "pull_run_timeout": 30,
+    "pull_queue_ttl": 30,
+    "result_ttl": 300
+  },
+  "supervisor": {
+    "inet_port": "10.0.0.3:9001"
+  }
+}

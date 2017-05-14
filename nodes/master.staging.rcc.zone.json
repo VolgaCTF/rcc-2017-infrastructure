@@ -1,0 +1,75 @@
+{
+  "run_list": [
+    "recipe[locale::default]",
+    "recipe[build-essential::default]",
+    "recipe[ntp::default]",
+    "recipe[latest-git::default]",
+    "recipe[themis-finals::python2]",
+    "recipe[dotfiles::default]",
+    "recipe[netdata::default]",
+    "recipe[latest-redis::default]",
+    "recipe[latest-nodejs::default]",
+    "recipe[modern_nginx::default]",
+    "recipe[supervisor::default]",
+    "recipe[yarn::default]",
+    "recipe[themis-finals::default]"
+  ],
+  "environment": "staging",
+  "automatic": {
+    "ipaddress": "master.staging.rcc.zone"
+  },
+  "build-essential": {
+    "compile_time": true
+  },
+  "dotfiles": {
+    "users": [
+      "root",
+      "vagrant"
+    ]
+  },
+  "themis-finals": {
+    "fqdn": "staging.rcc.zone",
+    "debug": false,
+    "autostart": true,
+    "backend": {
+      "revision": "master",
+      "server": {
+        "processes": 4
+      },
+      "queue": {
+        "processes": 4
+      }
+    },
+    "frontend": {
+      "revision": "master"
+    },
+    "stream": {
+      "revision": "master"
+    },
+    "sentry": {
+      "listen": {
+        "address": "10.0.0.2"
+      }
+    },
+    "live": {
+      "enable": true,
+      "fqdn": "live.staging.rcc.zone",
+      "server_username": "titan",
+      "server_hostname": "aspyatkin.com",
+      "remote_port": "5001"
+    }
+  },
+  "latest-redis": {
+    "listen": {
+      "host": "127.0.0.1",
+      "port": 6379
+    }
+  },
+  "latest-nodejs": {
+    "install": "lts",
+    "binary": true
+  },
+  "supervisor": {
+    "inet_port": "10.0.0.2:9001"
+  }
+}

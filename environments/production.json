@@ -1,0 +1,173 @@
+{
+  "name": "production",
+  "description": "Production environment",
+  "json_class": "Chef::Environment",
+  "chef_type": "environment",
+  "default_attributes": {
+    "themis-finals": {
+      "sentry": {
+        "config": {
+          "organization": "RCC",
+          "teams": [
+            "Backend",
+            "Frontend",
+            "Stream",
+            "Checkers"
+          ],
+          "projects": {
+            "Checkers": [
+              "imajinn",
+              "mangodb",
+              "oracle",
+              "notsoprime"
+            ]
+          }
+        }
+      },
+      "customize_cookbook": "themis-finals-customize-rcc-2017",
+      "frontend_customize_module": "frontend/customize.js",
+      "frontend_extra_files": {
+        "frontend/rcc-logo.svg": "src/images/rcc-logo.svg",
+        "frontend/rcc-notify-logo.png": "src/images/rcc-notify-logo.png"
+      },
+      "team_logo_files": {
+        "logo/MosPolytech.png": "team1.png",
+        "logo/ufologists.png": "team2.png",
+        "logo/Koibasta.png": "team3.png",
+        "logo/Bushwhackers.png": "team4.png",
+        "logo/SUSlo.PAS.png": "team5.png",
+        "logo/Pixels.png": "team6.png",
+        "logo/Corrupted Reflection.png": "team7.png",
+        "logo/BalalaikaCr3w.png": "team8.png",
+        "logo/FTI_CFU.png": "team9.png",
+        "logo/Espacio.png": "team10.png"
+      },
+      "supervisor_namespace": "rcc.2017",
+      "flag_wrap": {
+        "prefix": "RCC{",
+        "suffix": "}"
+      },
+      "key_nonce_size": 16,
+      "auth_token_header": "X-Themis-Finals-Auth-Token",
+      "config": {
+        "internal_networks": [
+          "10.0.100.0/24",
+          "10.0.200.0/24"
+        ],
+        "contest": {
+          "title": "RCC-2017",
+          "flag_lifetime": 300,
+          "push_period": 120,
+          "poll_period": 60,
+          "poll_count": 2,
+          "update_period": 60,
+          "attack_limit": {
+            "attempts": 250,
+            "time": 60
+          }
+        },
+        "teams": {
+          "team1": {
+            "name": "MosPolytech",
+            "network": "10.0.1.0/24",
+            "host": "10.0.1.3"
+          },
+          "team2": {
+            "name": "ufologists",
+            "network": "10.0.2.0/24",
+            "host": "10.0.2.3"
+          },
+          "team3": {
+            "name": "Koibasta",
+            "network": "10.0.3.0/24",
+            "host": "10.0.3.3"
+          },
+          "team4": {
+            "name": "Bushwhackers",
+            "network": "10.0.4.0/24",
+            "host": "10.0.4.3"
+          },
+          "team5": {
+            "name": "SUSlo.PAS",
+            "network": "10.0.5.0/24",
+            "host": "10.0.5.3"
+          },
+          "team6": {
+            "name": "Pixels",
+            "network": "10.0.6.0/24",
+            "host": "10.0.6.3"
+          },
+          "team7": {
+            "name": "Corrupted Reflection",
+            "network": "10.0.7.0/24",
+            "host": "10.0.7.3"
+          },
+          "team8": {
+            "name": "BalalaikaCr3w",
+            "network": "10.0.8.0/24",
+            "host": "10.0.8.3"
+          },
+          "team9": {
+            "name": "FTI_CFU",
+            "network": "10.0.9.0/24",
+            "host": "10.0.9.3"
+          },
+          "team10": {
+            "name": "Espacio",
+            "network": "10.0.10.0/24",
+            "host": "10.0.10.3"
+          }
+        },
+        "services": {
+          "imajinn": {
+            "name": "imajinn",
+            "protocol": 2,
+            "metadata": {
+              "push_url": "http://imajinn.checker.2017.rcc.zone/push",
+              "pull_url": "http://imajinn.checker.2017.rcc.zone/pull"
+            }
+          },
+          "mangodb": {
+            "name": "mangodb",
+            "protocol": 2,
+            "metadata": {
+              "push_url": "http://mangodb.checker.2017.rcc.zone/push",
+              "pull_url": "http://mangodb.checker.2017.rcc.zone/pull"
+            }
+          },
+          "oracle": {
+            "name": "oracle",
+            "protocol": 2,
+            "metadata": {
+              "push_url": "http://oracle.checker.2017.rcc.zone/push",
+              "pull_url": "http://oracle.checker.2017.rcc.zone/pull"
+            }
+          },
+          "notsoprime": {
+            "name": "notsoprime",
+            "protocol": 2,
+            "metadata": {
+              "push_url": "http://notsoprime.checker.2017.rcc.zone/push",
+              "pull_url": "http://notsoprime.checker.2017.rcc.zone/pull"
+            }
+          }
+        }
+      }
+    },
+    "modern_nginx": {
+      "with_openssl": false,
+      "with_http2": false,
+      "with_ipv6": false,
+      "with_ct": false,
+      "with_status": true
+    },
+    "ntp": {
+      "servers": [
+        "0.pool.ntp.org",
+        "1.pool.ntp.org",
+        "2.pool.ntp.org",
+        "3.pool.ntp.org"
+      ]
+    }
+  }
+}

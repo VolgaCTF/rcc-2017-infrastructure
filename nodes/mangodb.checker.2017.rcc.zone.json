@@ -1,0 +1,51 @@
+{
+  "run_list": [
+    "recipe[locale::default]",
+    "recipe[build-essential::default]",
+    "recipe[ntp::default]",
+    "recipe[latest-git::default]",
+    "recipe[themis-finals::python2]",
+    "recipe[dotfiles::default]",
+    "recipe[netdata::default]",
+    "recipe[latest-redis::default]",
+    "recipe[modern_nginx::default]",
+    "recipe[supervisor::default]",
+    "recipe[rcc-2017-mangodb-checker::default]"
+  ],
+  "environment": "production",
+  "automatic": {
+    "ipaddress": "mangodb.checker.2017.rcc.zone"
+  },
+  "build-essential": {
+    "compile_time": true
+  },
+  "dotfiles": {
+    "users": [
+      "root",
+      "vagrant"
+    ]
+  },
+  "latest-redis": {
+    "listen": {
+      "host": "127.0.0.1",
+      "port": 6379
+    }
+  },
+  "rcc-2017-mangodb-checker": {
+    "revision": "master",
+    "fqdn": "mangodb.checker.2017.rcc.zone",
+    "debug": false,
+    "autostart": true,
+    "queue": {
+      "processes": 12
+    },
+    "push_run_timeout": 60,
+    "push_queue_ttl": 120,
+    "pull_run_timeout": 60,
+    "pull_queue_ttl": 120,
+    "result_ttl": 300
+  },
+  "supervisor": {
+    "inet_port": "10.0.200.23:9001"
+  }
+}

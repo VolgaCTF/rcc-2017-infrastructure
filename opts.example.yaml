@@ -1,0 +1,106 @@
+vms:
+  master:
+    box: aspyatkin/ubuntu-16.04-server-amd64
+    box_version: ~> 1.2.1
+    name: master.finals.2016.volgactf.ru
+    ssh_insert_key: no
+    memory: 2048
+    cpus: 2
+    hostname: master.finals.2016.volgactf.ru
+    network:
+      # public:
+      #   - network: 172.23.0.0/24
+      #     ip: 172.23.0.2
+      #     bridge: 'en4: Thunderbolt Ethernet'
+      private:
+        - ip: 172.21.0.2
+          netmask: 255.255.0.0
+    synced_folders:
+      - host: .
+        guest: /vagrant
+        opts:
+          disabled: yes
+  'calculator.checker':
+    box: aspyatkin/ubuntu-16.04-server-amd64
+    box_version: ~> 1.2.1
+    name: calculator.checker.finals.2016.volgactf.ru
+    ssh_insert_key: no
+    memory: 1024
+    cpus: 2
+    hostname: calculator.checker.finals.2016.volgactf.ru
+    network:
+      # public:
+      #   - network: 172.23.0.0/24
+      #     ip: 172.23.0.3
+      #     bridge: 'en4: Thunderbolt Ethernet'
+      private:
+        - ip: 172.21.0.11
+          netmask: 255.255.0.0
+    synced_folders:
+      - host: .
+        guest: /vagrant
+        opts:
+          disabled: yes
+  'cloudfs.checker':
+    box: aspyatkin/ubuntu-16.04-server-amd64
+    box_version: ~> 1.2.1
+    name: cloudfs.checker.finals.2016.volgactf.ru
+    ssh_insert_key: no
+    memory: 1024
+    cpus: 2
+    hostname: cloudfs.checker.finals.2016.volgactf.ru
+    network:
+      # public:
+      #   - network: 172.23.0.0/24
+      #     ip: 172.23.0.4
+      #     bridge: 'en4: Thunderbolt Ethernet'
+      private:
+        - ip: 172.21.0.12
+          netmask: 255.255.0.0
+    synced_folders:
+      - host: .
+        guest: /vagrant
+        opts:
+          disabled: yes
+  'crm.checker':
+    box: aspyatkin/ubuntu-16.04-server-amd64
+    box_version: ~> 1.2.1
+    name: crm.checker.finals.2016.volgactf.ru
+    ssh_insert_key: no
+    memory: 1024
+    cpus: 2
+    hostname: crm.checker.finals.2016.volgactf.ru
+    network:
+      # public:
+      #   - network: 172.23.0.0/24
+      #     ip: 172.23.0.5
+      #     bridge: 'en4: Thunderbolt Ethernet'
+      private:
+        - ip: 172.21.0.13
+          netmask: 255.255.0.0
+    synced_folders:
+      - host: .
+        guest: /vagrant
+        opts:
+          disabled: yes
+  'senotes.checker':
+    box: aspyatkin/ubuntu-16.04-server-amd64
+    box_version: ~> 1.2.1
+    name: senotes.checker.finals.2016.volgactf.ru
+    ssh_insert_key: no
+    memory: 1024
+    cpus: 2
+    hostname: senotes.checker.finals.2016.volgactf.ru
+    network:
+      # public:
+      #   - network: 172.23.0.0/24
+      #     ip: 172.23.0.6
+      #     bridge: 'en4: Thunderbolt Ethernet'
+      private:
+        - ip: 172.21.0.15
+          netmask: 255.255.0.0
+    synced_folders:
+      - host: .
+        guest: /vagrant
+        opts:
+          disabled: yes
